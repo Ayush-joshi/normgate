@@ -25,6 +25,17 @@ The core contains no industry vocabulary, regulatory assumptions, provider-speci
 - Extension SDK, signed package format, and package registry introduced in Phase 5
 - Container, Docker Compose, Kubernetes, and Helm deployment assets
 
+## Detailed phase plans
+
+Execute phases in order. A phase begins only after the previous phase's required validation and completion checklist pass. Each detailed plan defines its own test-first sequence, file-level workstreams, coverage gates, validation commands, and suggested pull-request boundaries.
+
+1. [Phase 1: Foundation](phases/PHASE_1_FOUNDATION.md)
+2. [Phase 2: Policy engine](phases/PHASE_2_POLICY_ENGINE.md)
+3. [Phase 3: Enforcement runtime](phases/PHASE_3_ENFORCEMENT_RUNTIME.md)
+4. [Phase 4: Control plane](phases/PHASE_4_CONTROL_PLANE.md)
+5. [Phase 5: Extensions and domain packages](phases/PHASE_5_EXTENSIONS_AND_DOMAIN_PACKS.md)
+6. [Phase 6: Production release](phases/PHASE_6_PRODUCTION_RELEASE.md)
+
 ## Fixed technical choices
 
 - Runtime and CLI: Go 1.25+
@@ -68,6 +79,8 @@ The core contains no industry vocabulary, regulatory assumptions, provider-speci
 - `Receipt`: decision inputs, versions, result, enforcement outcome, and replay metadata.
 
 ## Phase 1 - Contracts, repository foundation, and security model
+
+Detailed execution plan: [PHASE_1_FOUNDATION.md](phases/PHASE_1_FOUNDATION.md)
 
 ### Objective
 
@@ -127,6 +140,8 @@ Establish the complete domain-neutral vocabulary, compatibility rules, repositor
 
 ## Phase 2 - Policy engine and policy lifecycle
 
+Detailed execution plan: [PHASE_2_POLICY_ENGINE.md](phases/PHASE_2_POLICY_ENGINE.md)
+
 ### Objective
 
 Deliver deterministic policy evaluation and the full lifecycle required to author, validate, distribute, activate, and roll back policy safely.
@@ -163,6 +178,8 @@ Deliver deterministic policy evaluation and the full lifecycle required to autho
 - Policy rollback restores the exact prior decision behavior in replay tests.
 
 ## Phase 3 - Enforcement data plane, gateways, and receipts
+
+Detailed execution plan: [PHASE_3_ENFORCEMENT_RUNTIME.md](phases/PHASE_3_ENFORCEMENT_RUNTIME.md)
 
 ### Objective
 
@@ -212,6 +229,8 @@ Build the complete runtime path from intercepted operation through decision, tra
 
 ## Phase 4 - Complete control plane, state, simulation, and operator experience
 
+Detailed execution plan: [PHASE_4_CONTROL_PLANE.md](phases/PHASE_4_CONTROL_PLANE.md)
+
 ### Objective
 
 Complete the domain-agnostic product end to end: persistence, tenancy, lineage, approvals, policy operations, evidence, SDKs, and an operator console.
@@ -252,6 +271,8 @@ Complete the domain-agnostic product end to end: persistence, tenancy, lineage, 
 
 ## Phase 5 - Extension platform, domain packages, and core release candidate
 
+Detailed execution plan: [PHASE_5_EXTENSIONS_AND_DOMAIN_PACKS.md](phases/PHASE_5_EXTENSIONS_AND_DOMAIN_PACKS.md)
+
 ### Objective
 
 Freeze the complete core API, introduce extensions only after the core works end to end, and prove agnosticism with independently installable domain packages.
@@ -290,6 +311,8 @@ Freeze the complete core API, introduce extensions only after the core works end
 - Extension failure, compromise simulation, or incompatibility cannot silently bypass enforcement.
 
 ## Phase 6 - Production hardening, independent validation, and v1 release
+
+Detailed execution plan: [PHASE_6_PRODUCTION_RELEASE.md](phases/PHASE_6_PRODUCTION_RELEASE.md)
 
 ### Objective
 

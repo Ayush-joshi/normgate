@@ -51,7 +51,14 @@ The language model may help classify content or intent, but it never grants auth
 
 NormGate is in the planning stage. No production implementation or compliance assurance is available yet.
 
-The complete six-phase build plan is documented in [plan/IMPLEMENTATION_ROADMAP.md](plan/IMPLEMENTATION_ROADMAP.md).
+The complete six-phase build plan is documented in [plan/IMPLEMENTATION_ROADMAP.md](plan/IMPLEMENTATION_ROADMAP.md). Each phase also has an implementation-level agent guide:
+
+1. [Foundation](plan/phases/PHASE_1_FOUNDATION.md)
+2. [Policy engine](plan/phases/PHASE_2_POLICY_ENGINE.md)
+3. [Enforcement runtime](plan/phases/PHASE_3_ENFORCEMENT_RUNTIME.md)
+4. [Control plane](plan/phases/PHASE_4_CONTROL_PLANE.md)
+5. [Extensions and domain packages](plan/phases/PHASE_5_EXTENSIONS_AND_DOMAIN_PACKS.md)
+6. [Production release](plan/phases/PHASE_6_PRODUCTION_RELEASE.md)
 
 ## License
 
