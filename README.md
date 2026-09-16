@@ -49,7 +49,58 @@ The language model may help classify content or intent, but it never grants auth
 
 ## Status
 
-NormGate is in the planning stage. No production implementation or compliance assurance is available yet.
+**Phases 1 and 2 are implemented and locally verified. Phase 3 is next.**
+
+| Phase | Scope | Status |
+| --- | --- | --- |
+| 1 | Contracts, canonical hashing, configuration and repository foundation | Implemented; local verification passed |
+| 2 | Deterministic policy engine and policy lifecycle | Implemented; local verification passed |
+| 3 | Enforcement runtime, gateways, permits and receipts | Not started |
+| 4 | Control plane, SDK clients and operator console | Not started |
+| 5 | Extensions and domain packages | Not started |
+| 6 | Production hardening and release | Not started |
+
+### Available now
+
+- Fourteen versioned JSON Schemas, with generated Go structs, Python TypedDict
+  models, TypeScript types and OpenAPI 3.1 components.
+- Canonical JSON and SHA-256 implementations in all three languages, tested
+  against 39 shared vectors and 99 contract fixtures.
+- Embedded deterministic OPA engine, layered policy composition, reproducible bundles,
+  authoring CLI, atomic activation/recovery/rollback and filesystem/HTTPS/OCI sources.
+- Generic baseline policy with 27 exact scenarios and rule/obligation explanations.
+- Strict JSON/YAML configuration with environment and file-secret references,
+  redacted diagnostics and the `normgate config validate` command.
+- Architecture checks, security records and a verification workflow covering
+  formatting, tests, race detection, fuzzing, coverage, licenses and vulnerabilities.
+
+The Phase 2 local gate records **92.59% overall Go statement coverage**, with both
+policy packages above 93%. See the [validation record](docs/validation/phase-2.md)
+for the environment and results, and [GitHub Actions](https://github.com/Ayush-joshi/normgate/actions/workflows/verify.yml)
+for hosted run status.
+
+The binary validates configuration and evaluates policies locally through
+`normgate policy explain`. It does not yet serve HTTP decisions or execute protected
+operations. See [policy development and lifecycle](docs/policy.md) and the
+[Phase 2 validation record](docs/validation/phase-2.md). Generated SDK types are
+transport models, not HTTP clients or runtime validators. No production or compliance assurance is available.
+
+## Develop locally
+
+Use Go 1.26.8+, Python 3.11+ and Node.js 22.18+ (24 recommended).
+
+```sh
+make setup
+make verify
+./bin/normgate version
+./bin/normgate policy test policies/baseline
+NORMGATE_API_KEY=local-development-key ./bin/normgate config validate --file config.example.yaml
+```
+
+See [development instructions](docs/development.md) for configuration, generated
+artifacts, test gates and tool overrides.
+
+## Implementation plan
 
 The complete six-phase build plan is documented in [plan/IMPLEMENTATION_ROADMAP.md](plan/IMPLEMENTATION_ROADMAP.md). Each phase also has an implementation-level agent guide:
 
@@ -62,4 +113,4 @@ The complete six-phase build plan is documented in [plan/IMPLEMENTATION_ROADMAP.
 
 ## License
 
-The project is intended to use the Apache License 2.0. A `LICENSE` file will be added before the first distributable release.
+Licensed under the [Apache License 2.0](LICENSE).

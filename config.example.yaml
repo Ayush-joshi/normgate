@@ -1,0 +1,6 @@
+schema_version: '1.0'
+listen_address: '127.0.0.1:8080'
+policy_source: 'file:///etc/normgate/policy'
+request_timeout_ms: 5000
+fail_closed: true
+api_key: '${ENV:NORMGATE_API_KEY}'

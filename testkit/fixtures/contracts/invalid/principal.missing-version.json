@@ -1,0 +1,13 @@
+{
+  "requirement": "NG-F002",
+  "schema": "principal",
+  "valid": false,
+  "value": {
+    "id": "principal-1",
+    "tenant_id": "tenant-1",
+    "kind": "service",
+    "roles": [
+      "operator"
+    ]
+  }
+}

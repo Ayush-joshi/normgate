@@ -1,0 +1,14 @@
+{
+  "requirement": "NG-F002",
+  "schema": "resource",
+  "valid": true,
+  "value": {
+    "schema_version": "1.0",
+    "id": "data-1",
+    "kind": "document",
+    "tenant_id": "tenant-1",
+    "classifications": [
+      "confidential"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+.tools/
+.cache/
+node_modules/
+__pycache__/
+*.pyc
+coverage.out
+bin/
+dist/
+.venv/

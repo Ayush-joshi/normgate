@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "id": "normgate.baseline",
+  "version": "0.2.0",
+  "minimum_core_version": "0.2.0",
+  "namespaces": [
+    "normgate.baseline"
+  ],
+  "dependencies": [],
+  "external_fact_sources": [],
+  "source_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "build_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "signing_identity": "unsigned",
+  "created_at": "2026-09-17T00:00:00Z"
+}

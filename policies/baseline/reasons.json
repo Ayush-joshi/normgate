@@ -1,0 +1,30 @@
+{
+  "ng.policy.baseline_allow": {
+    "description": "All baseline constraints passed.",
+    "remediation": "Apply remaining policy layers and enforce returned obligations."
+  },
+  "ng.policy.identity_unknown": {
+    "description": "Principal is not registered for its tenant and kind.",
+    "remediation": "Authenticate the caller and register the authoritative principal."
+  },
+  "ng.policy.tenant_mismatch": {
+    "description": "A resource belongs to a different tenant.",
+    "remediation": "Use resources in the authenticated principal tenant."
+  },
+  "ng.policy.operation_unknown": {
+    "description": "Operation kind or name is not registered.",
+    "remediation": "Declare the operation before enabling access."
+  },
+  "ng.policy.destination_unknown": {
+    "description": "Destination identity, URI or kind is not registered.",
+    "remediation": "Register the exact destination and handling properties."
+  },
+  "ng.policy.purpose_undeclared": {
+    "description": "Purpose is not declared.",
+    "remediation": "Supply a purpose declared by the application policy."
+  },
+  "ng.policy.context_incomplete": {
+    "description": "Application or environment is not registered.",
+    "remediation": "Supply authenticated application and environment context."
+  }
+}

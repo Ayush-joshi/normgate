@@ -1,0 +1,15 @@
+{
+  "requirement": "NG-F002",
+  "schema": "external-fact",
+  "valid": false,
+  "value": {
+    "schema_version": "1.0",
+    "id": "fact-1",
+    "source": "registry",
+    "revision": "rev-1",
+    "value_ref": "fact-value-1",
+    "value_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "resolved_at": "2026-02-30T12:00:00Z",
+    "expires_at": "2026-09-15T01:00:00Z"
+  }
+}

@@ -1,0 +1,317 @@
+[
+  {
+    "name": "sorted-keys",
+    "input": "{\"z\":2,\"a\":{\"b\":true,\"a\":false}}",
+    "profile": {},
+    "canonical": "{\"a\":{\"a\":false,\"b\":true},\"z\":2}",
+    "digest": "sha256:7fe72b251aa5468c0aedee1189f6b19afd6b95d2900f699b82e4a7deec5b147b"
+  },
+  {
+    "name": "unicode-nfc",
+    "input": "{\"text\":\"e\\u0301\"}",
+    "profile": {},
+    "canonical": "{\"text\":\"é\"}",
+    "digest": "sha256:42d3cbf59fdccced04e5dff14433fb52d34d58e385e9770ffd896ff517d63b92"
+  },
+  {
+    "name": "unicode-order",
+    "input": "{\"😀\":1,\"\\ue000\":2}",
+    "profile": {},
+    "canonical": "{\"\":2,\"😀\":1}",
+    "digest": "sha256:cddbdeacace14eb6923e88dfafb2a3e7df21ec908682f50a886b7b9567692d02"
+  },
+  {
+    "name": "null-absent",
+    "input": "{\"present\":null,\"empty\":\"\"}",
+    "profile": {},
+    "canonical": "{\"empty\":\"\",\"present\":null}",
+    "digest": "sha256:0611630babb19d103683bbc95c69f7fb68e446493e203547311a565dfe91cd3d"
+  },
+  {
+    "name": "integer-boundaries",
+    "input": "[-9007199254740991,9007199254740991,-0]",
+    "profile": {},
+    "canonical": "[-9007199254740991,9007199254740991,0]",
+    "digest": "sha256:daaaf3e00cf7896b7760e1324617efbacaa0e3b8fbc873d245ea7a96640da08a"
+  },
+  {
+    "name": "escapes",
+    "input": "[\"\\b\\f\\n\\r\\t\\u0000\\\"\\\\/<>&\\u2028\\u2029\"]",
+    "profile": {},
+    "canonical": "[\"\\b\\f\\n\\r\\t\\u0000\\\"\\\\/<>&  \"]",
+    "digest": "sha256:379a736a503373b29521ab41bd37f9275630d80a08c4409c6cdf6d8c7eaa1b53"
+  },
+  {
+    "name": "set-and-sequence",
+    "input": "{\"classifications\":[\"z\",\"a\"],\"arguments\":{\"classifications\":[\"z\",\"a\"]}}",
+    "profile": {
+      "sets": [
+        "/classifications"
+      ]
+    },
+    "canonical": "{\"arguments\":{\"classifications\":[\"z\",\"a\"]},\"classifications\":[\"a\",\"z\"]}",
+    "digest": "sha256:b3ea726fb05e70d26f8702190ff494388ae67a4e91097c596621fba5d294512c"
+  },
+  {
+    "name": "timestamp-offset",
+    "input": "{\"at\":\"2026-09-15T05:30:00.123400000+05:30\"}",
+    "profile": {
+      "timestamps": [
+        "/at"
+      ]
+    },
+    "canonical": "{\"at\":\"2026-09-15T00:00:00.1234Z\"}",
+    "digest": "sha256:010d41ddae0efdfdc8d56ed68936aff1ff0cb9c269af6749b7e8e7a547665f1f"
+  },
+  {
+    "name": "transport-omission",
+    "input": "{\"transport\":{\"request_id\":\"x\"},\"arguments\":{\"transport\":\"signed\"}}",
+    "profile": {
+      "omit": [
+        "/transport"
+      ]
+    },
+    "canonical": "{\"arguments\":{\"transport\":\"signed\"}}",
+    "digest": "sha256:23e02bfbb82d1eb8ea221199ceab82c792cd348dafd87b9d1a7112af03dce6e9"
+  },
+  {
+    "name": "scalar-null",
+    "input": "null",
+    "profile": {},
+    "canonical": "null",
+    "digest": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "name": "empty-list",
+    "input": "[]",
+    "profile": {},
+    "canonical": "[]",
+    "digest": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "name": "unicode-surrogate-pair",
+    "input": "\"\\ud83d\\ude00\"",
+    "profile": {},
+    "canonical": "\"😀\"",
+    "digest": "sha256:7a0c50b92434b015545fe93ab723db2d4b2cdd14a441405624a9ce8be29f1d5a"
+  },
+  {
+    "name": "duplicate-keys",
+    "input": "{\"a\":1,\"a\":2}",
+    "profile": {},
+    "invalid": true
+  },
+  {
+    "name": "nfc-key-collision",
+    "input": "{\"é\":1,\"e\\u0301\":2}",
+    "profile": {},
+    "invalid": true
+  },
+  {
+    "name": "decimal",
+    "input": "1.0",
+    "profile": {},
+    "invalid": true
+  },
+  {
+    "name": "exponent",
+    "input": "1e3",
+    "profile": {},
+    "invalid": true
+  },
+  {
+    "name": "out-of-range",
+    "input": "9007199254740992",
+    "profile": {},
+    "invalid": true
+  },
+  {
+    "name": "trailing-json",
+    "input": "{} {}",
+    "profile": {},
+    "invalid": true
+  },
+  {
+    "name": "bad-json",
+    "input": "{\"a\":}",
+    "profile": {},
+    "invalid": true
+  },
+  {
+    "name": "unpaired-surrogate",
+    "input": "\"\\ud800\"",
+    "profile": {},
+    "invalid": true
+  },
+  {
+    "name": "unpaired-low",
+    "input": "\"\\udc00\"",
+    "profile": {},
+    "invalid": true
+  },
+  {
+    "name": "trailing-garbage",
+    "input": "{}x",
+    "profile": {},
+    "invalid": true
+  },
+  {
+    "name": "deep",
+    "input": "[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]",
+    "profile": {},
+    "invalid": true
+  },
+  {
+    "name": "empty",
+    "input": "",
+    "profile": {},
+    "invalid": true
+  },
+  {
+    "name": "bad-timestamp",
+    "input": "{\"at\":\"2026-02-30T00:00:00Z\"}",
+    "profile": {
+      "timestamps": [
+        "/at"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "wrong-time-type",
+    "input": "{\"at\":1}",
+    "profile": {
+      "timestamps": [
+        "/at"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "wrong-set-type",
+    "input": "{\"labels\":\"a\"}",
+    "profile": {
+      "sets": [
+        "/labels"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "duplicate-set",
+    "input": "{\"labels\":[\"a\",\"a\"]}",
+    "profile": {
+      "sets": [
+        "/labels"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "normalized-duplicate-set",
+    "input": "{\"labels\":[\"é\",\"e\\u0301\"]}",
+    "profile": {
+      "sets": [
+        "/labels"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "mixed-set",
+    "input": "{\"labels\":[1,\"a\"]}",
+    "profile": {
+      "sets": [
+        "/labels"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "timestamp-comma",
+    "input": "{\"at\": \"2026-09-15T00:00:00,1Z\"}",
+    "profile": {
+      "timestamps": [
+        "/at"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "timestamp-too-precise",
+    "input": "{\"at\": \"2026-09-15T00:00:00.1234567891Z\"}",
+    "profile": {
+      "timestamps": [
+        "/at"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "timestamp-offset-24",
+    "input": "{\"at\": \"2026-09-15T00:00:00+24:00\"}",
+    "profile": {
+      "timestamps": [
+        "/at"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "timestamp-utc-underflow",
+    "input": "{\"at\": \"0001-01-01T00:00:00+01:00\"}",
+    "profile": {
+      "timestamps": [
+        "/at"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "combining-boundary",
+    "input": "\"a\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\"",
+    "profile": {},
+    "canonical": "\"á́́́́́́́́́́́́́́́́́́́́́́́́́́́́́\"",
+    "digest": "sha256:ca96892ee3c8b38068e75953476c7fded38a343ab3245f23a0142681b217c773"
+  },
+  {
+    "name": "combining-limit",
+    "input": "\"a\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\"",
+    "profile": {
+      "omit": [
+        "/transport"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "decomposed-combining-limit",
+    "input": "\"\\u0344\\u0344\\u0344\\u0344\\u0344\\u0344\\u0344\\u0344\\u0344\\u0344\\u0344\\u0344\\u0344\\u0344\\u0344\\u0344\"",
+    "profile": {
+      "omit": [
+        "/transport"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "combining-key-limit",
+    "input": "{\"a\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\": 1}",
+    "profile": {
+      "omit": [
+        "/transport"
+      ]
+    },
+    "invalid": true
+  },
+  {
+    "name": "combining-omitted-limit",
+    "input": "{\"transport\": \"a\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\\u0301\"}",
+    "profile": {
+      "omit": [
+        "/transport"
+      ]
+    },
+    "invalid": true
+  }
+]

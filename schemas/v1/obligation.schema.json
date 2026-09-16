@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://normgate.dev/schemas/v1/obligation.schema.json",
+  "title": "Obligation",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^1\\.(0|[1-9][0-9]*)$",
+      "maxLength": 16
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "remove_paths",
+        "retain_paths",
+        "tokenize",
+        "mask",
+        "cap_records",
+        "cap_bytes",
+        "restrict_destination",
+        "require_confirmation",
+        "require_approval",
+        "prohibit_retention",
+        "response_check"
+      ]
+    },
+    "paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 1024,
+        "pattern": "^(/([^~/]|~[01])*)*$"
+      },
+      "maxItems": 1024,
+      "uniqueItems": true,
+      "x-normgate-set": true,
+      "minItems": 1
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "destination_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "reviewer_group": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "check_ref": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "extensions": {
+      "type": "object",
+      "maxProperties": 64,
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9-]*(\\.[a-z][a-z0-9-]*)+/[a-z][a-z0-9_.-]*$"
+      },
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "kind"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "remove_paths",
+              "retain_paths",
+              "tokenize",
+              "mask"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "paths"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "cap_records",
+              "cap_bytes"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "limit"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "restrict_destination"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "destination_id"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "require_approval"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "reviewer_group"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "response_check"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "check_ref"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "paths"
+        ]
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "remove_paths",
+              "retain_paths",
+              "tokenize",
+              "mask"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "limit"
+        ]
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "cap_records",
+              "cap_bytes"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "destination_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "restrict_destination"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "reviewer_group"
+        ]
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "require_approval"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "check_ref"
+        ]
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "response_check"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

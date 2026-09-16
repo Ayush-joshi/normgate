@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://normgate.dev/schemas/v1/configuration.schema.json",
+  "title": "Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^1\\.(0|[1-9][0-9]*)$",
+      "maxLength": 16
+    },
+    "listen_address": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "policy_source": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048
+    },
+    "request_timeout_ms": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 60000
+    },
+    "fail_closed": {
+      "type": "boolean",
+      "const": true
+    },
+    "api_key": {
+      "type": "string",
+      "minLength": 16,
+      "maxLength": 65536
+    },
+    "extensions": {
+      "type": "object",
+      "maxProperties": 64,
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9-]*(\\.[a-z][a-z0-9-]*)+/[a-z][a-z0-9_.-]*$"
+      },
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "listen_address",
+    "policy_source",
+    "request_timeout_ms",
+    "fail_closed",
+    "api_key"
+  ]
+}

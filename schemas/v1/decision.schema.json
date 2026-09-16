@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://normgate.dev/schemas/v1/decision.schema.json",
+  "title": "Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^1\\.(0|[1-9][0-9]*)$",
+      "maxLength": 16
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "allow",
+        "deny",
+        "transform",
+        "require_approval"
+      ]
+    },
+    "policy_revision": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "operation_digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256,
+        "pattern": "^ng\\.(validation|authentication|policy|enforcement|storage|upstream|internal)\\.[a-z][a-z0-9_]*$"
+      },
+      "maxItems": 1024,
+      "uniqueItems": true,
+      "x-normgate-set": true,
+      "minItems": 1
+    },
+    "obligations": {
+      "type": "array",
+      "items": {
+        "$ref": "obligation.schema.json"
+      },
+      "maxItems": 1024
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?(Z|[+-]\\d{2}:\\d{2})$"
+    },
+    "external_facts_digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "extensions": {
+      "type": "object",
+      "maxProperties": 64,
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9-]*(\\.[a-z][a-z0-9-]*)+/[a-z][a-z0-9_.-]*$"
+      },
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "outcome",
+    "policy_revision",
+    "operation_digest",
+    "reason_codes",
+    "obligations",
+    "evaluated_at",
+    "external_facts_digest"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "deny"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "obligations": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "transform"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "obligations": {
+            "minItems": 1,
+            "contains": {
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "remove_paths",
+                    "retain_paths",
+                    "tokenize",
+                    "mask",
+                    "cap_records",
+                    "cap_bytes"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "require_approval"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "obligations": {
+            "contains": {
+              "properties": {
+                "kind": {
+                  "const": "require_approval"
+                }
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "obligations": {
+            "not": {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "require_approval"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "allow"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "obligations": {
+            "items": {
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "restrict_destination",
+                    "require_confirmation",
+                    "prohibit_retention",
+                    "response_check"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

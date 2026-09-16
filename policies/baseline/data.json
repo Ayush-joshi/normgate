@@ -1,0 +1,42 @@
+{
+  "config": {
+    "identities": [
+      {
+        "id": "principal-1",
+        "tenant_id": "tenant-1",
+        "kind": "service"
+      }
+    ],
+    "operation_kinds": [
+      "model.invoke",
+      "tool.call",
+      "retrieval.query",
+      "response.emit",
+      "memory.read",
+      "memory.write",
+      "memory.update",
+      "memory.delete"
+    ],
+    "operation_names": [
+      "summarize"
+    ],
+    "destinations": [
+      {
+        "id": "destination-1",
+        "uri": "https://service.example.test/execute",
+        "kind": "service"
+      }
+    ],
+    "purposes": [
+      "assistance"
+    ],
+    "applications": [
+      {
+        "id": "app-1",
+        "environments": [
+          "test"
+        ]
+      }
+    ]
+  }
+}

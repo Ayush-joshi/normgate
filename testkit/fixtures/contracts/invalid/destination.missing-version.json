@@ -1,0 +1,10 @@
+{
+  "requirement": "NG-F002",
+  "schema": "destination",
+  "valid": false,
+  "value": {
+    "id": "destination-1",
+    "kind": "service",
+    "uri": "https://service.example.test/execute"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "requirement": "NG-F002",
+  "schema": "obligation",
+  "valid": true,
+  "value": {
+    "schema_version": "1.0",
+    "id": "obligation-1",
+    "kind": "cap_records",
+    "limit": 10
+  }
+}

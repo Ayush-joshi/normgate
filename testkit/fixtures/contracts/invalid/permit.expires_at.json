@@ -1,0 +1,25 @@
+{
+  "requirement": "NG-F002",
+  "schema": "permit",
+  "valid": false,
+  "value": {
+    "schema_version": "1.0",
+    "id": "permit-1",
+    "principal_id": "principal-1",
+    "tenant_id": "tenant-1",
+    "destination_id": "destination-1",
+    "classifications": [
+      "confidential"
+    ],
+    "purpose": "assistance",
+    "operation_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "policy_revision": "rev-1",
+    "external_facts_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "obligations_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "nonce": "nnnnnnnnnnnnnnnnnnnnnn",
+    "issued_at": "2026-09-15T00:00:00Z",
+    "expires_at": null,
+    "key_id": "key-1",
+    "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  }
+}

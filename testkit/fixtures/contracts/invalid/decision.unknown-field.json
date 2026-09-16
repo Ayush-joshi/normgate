@@ -1,0 +1,19 @@
+{
+  "requirement": "NG-F002",
+  "schema": "decision",
+  "valid": false,
+  "value": {
+    "schema_version": "1.0",
+    "id": "decision-1",
+    "outcome": "allow",
+    "policy_revision": "rev-1",
+    "operation_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason_codes": [
+      "ng.policy.allowed"
+    ],
+    "obligations": [],
+    "evaluated_at": "2026-09-15T00:00:00Z",
+    "external_facts_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "unexpected": true
+  }
+}

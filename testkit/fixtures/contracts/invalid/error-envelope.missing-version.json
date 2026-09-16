@@ -1,0 +1,10 @@
+{
+  "requirement": "NG-F002",
+  "schema": "error-envelope",
+  "valid": false,
+  "value": {
+    "request_id": "request-1",
+    "code": "ng.validation.invalid_input",
+    "message": "Invalid request."
+  }
+}

@@ -241,11 +241,13 @@ make verify
 
 ## Completion checklist
 
-- [ ] Clean checkout passes `make verify`.
-- [ ] Generated artifacts cannot drift silently.
-- [ ] Cross-language hashes match every golden vector.
-- [ ] Unsupported contract versions fail explicitly.
-- [ ] Core import and vocabulary boundaries pass.
-- [ ] Coverage gates pass without excluding production packages.
-- [ ] Threat-model mitigations reference executable tests where applicable.
+- [x] Clean source export passes `make verify` (local validation; hosted CI pending).
+- [x] Generated artifacts cannot drift silently.
+- [x] Cross-language hashes match every golden vector.
+- [x] Unsupported contract versions fail explicitly.
+- [x] Core import and vocabulary boundaries pass.
+- [x] Coverage gates pass without excluding production packages.
+- [x] Threat-model mitigations reference executable tests where applicable.
 
+Completed locally on 2026-09-15. See [validation evidence](../../docs/validation/phase-1.md)
+for the exact environment, coverage, regressions and remaining hosting administration.

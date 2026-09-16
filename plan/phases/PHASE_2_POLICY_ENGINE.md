@@ -211,11 +211,13 @@ make verify
 
 ## Completion checklist
 
-- [ ] All policy changes are covered by scenario tests.
-- [ ] Cached evaluation meets the phase latency target.
-- [ ] Policy activation is atomic under concurrent load.
-- [ ] Invalid updates cannot replace the active revision.
-- [ ] Restart and rollback reproduce prior decisions exactly.
-- [ ] Explanations identify every contributing rule and obligation.
-- [ ] Full repository verification remains green.
+- [x] All policy changes are covered by scenario tests.
+- [x] Cached evaluation meets the phase latency target.
+- [x] Policy activation is atomic under concurrent load.
+- [x] Invalid updates cannot replace the active revision.
+- [x] Restart and rollback reproduce prior decisions exactly.
+- [x] Explanations identify every contributing rule and obligation.
+- [x] Full repository verification remains green.
 
+
+Completed and locally verified on 2026-09-17. See the [Phase 2 validation record](../../docs/validation/phase-2.md) for coverage, benchmarks, gate results and remaining phase boundaries.

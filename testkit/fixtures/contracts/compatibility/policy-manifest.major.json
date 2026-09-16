@@ -1,0 +1,22 @@
+{
+  "requirement": "NG-F002",
+  "schema": "policy-manifest",
+  "valid": false,
+  "value": {
+    "schema_version": "2.0",
+    "id": "baseline",
+    "version": "1.0.0",
+    "minimum_core_version": "0.1.0",
+    "namespaces": [
+      "baseline"
+    ],
+    "dependencies": [],
+    "external_fact_sources": [
+      "registry"
+    ],
+    "source_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "build_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "signing_identity": "publisher-1",
+    "created_at": "2026-09-15T00:00:00Z"
+  }
+}

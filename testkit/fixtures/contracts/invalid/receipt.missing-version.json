@@ -1,0 +1,31 @@
+{
+  "requirement": "NG-F002",
+  "schema": "receipt",
+  "valid": false,
+  "value": {
+    "id": "receipt-1",
+    "tenant_id": "tenant-1",
+    "decision": {
+      "schema_version": "1.0",
+      "id": "decision-1",
+      "outcome": "allow",
+      "policy_revision": "rev-1",
+      "operation_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "reason_codes": [
+        "ng.policy.allowed"
+      ],
+      "obligations": [],
+      "evaluated_at": "2026-09-15T00:00:00Z",
+      "external_facts_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "policy_revision": "rev-1",
+    "event_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "configuration_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "external_facts_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "input_ref": "replay-input-1",
+    "enforcement_outcome": "not_executed",
+    "recorded_at": "2026-09-15T00:00:00Z",
+    "previous_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "receipt_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  }
+}

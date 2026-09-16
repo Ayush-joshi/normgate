@@ -27,6 +27,22 @@ The core contains no industry vocabulary, regulatory assumptions, provider-speci
 
 ## Detailed phase plans
 
+### Implementation progress
+
+Phase 1 is implemented and locally verified as of 2026-09-15. Its full local gate
+passes, including 39 cross-language canonicalization vectors, 99 contract fixtures,
+race and fuzz tests, dependency checks, and 94.55% overall Go statement coverage.
+See the [Phase 1 validation record](../docs/validation/phase-1.md) for evidence and
+scope. Hosted CI status is tracked separately in
+[GitHub Actions](https://github.com/Ayush-joshi/normgate/actions/workflows/verify.yml).
+
+Phase 2 implements deterministic OPA evaluation, policy composition, bundle and CLI
+tooling, atomic lifecycle management, distribution sources and the generic baseline.
+See the [Phase 2 validation record](../docs/validation/phase-2.md). Phase 3 is next;
+Phases 3–6 have not started. Protected downstream operations are not executed yet.
+
+### Execution order
+
 Execute phases in order. A phase begins only after the previous phase's required validation and completion checklist pass. Each detailed plan defines its own test-first sequence, file-level workstreams, coverage gates, validation commands, and suggested pull-request boundaries.
 
 1. [Phase 1: Foundation](phases/PHASE_1_FOUNDATION.md)
@@ -38,7 +54,7 @@ Execute phases in order. A phase begins only after the previous phase's required
 
 ## Fixed technical choices
 
-- Runtime and CLI: Go 1.25+
+- Runtime and CLI: Go 1.26+ (OPA v1.20.1 requirement; CI uses Go 1.26.8)
 - Policy evaluation: embedded Open Policy Agent/Rego behind an internal `PolicyEngine` interface
 - Public API: HTTP/JSON described by OpenAPI 3.1
 - Contract source of truth: JSON Schema Draft 2020-12

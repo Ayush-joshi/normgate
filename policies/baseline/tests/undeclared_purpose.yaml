@@ -1,0 +1,74 @@
+{
+  "id": "undeclared_purpose",
+  "event": {
+    "schema_version": "1.0",
+    "id": "event-1",
+    "occurred_at": "2026-09-15T00:00:00Z",
+    "principal": {
+      "schema_version": "1.0",
+      "id": "principal-1",
+      "tenant_id": "tenant-1",
+      "kind": "service",
+      "roles": [
+        "operator"
+      ]
+    },
+    "operation": {
+      "schema_version": "1.0",
+      "id": "operation-1",
+      "kind": "tool.call",
+      "name": "summarize",
+      "arguments_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "data_refs": [
+        "data-1"
+      ],
+      "resources": [
+        {
+          "schema_version": "1.0",
+          "id": "data-1",
+          "kind": "document",
+          "tenant_id": "tenant-1",
+          "classifications": [
+            "confidential"
+          ]
+        }
+      ],
+      "destination": {
+        "schema_version": "1.0",
+        "id": "destination-1",
+        "kind": "service",
+        "uri": "https://service.example.test/execute"
+      },
+      "classifications": [
+        "confidential"
+      ],
+      "purpose": "other"
+    },
+    "context": {
+      "application_id": "app-1",
+      "environment": "test"
+    },
+    "external_facts": [
+      {
+        "schema_version": "1.0",
+        "id": "fact-1",
+        "source": "registry",
+        "revision": "rev-1",
+        "value_ref": "fact-value-1",
+        "value_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "resolved_at": "2026-09-15T00:00:00Z",
+        "expires_at": "2026-09-15T01:00:00Z"
+      }
+    ]
+  },
+  "expected": {
+    "outcome": "deny",
+    "reason_codes": [
+      "ng.policy.purpose_undeclared"
+    ],
+    "obligations": [],
+    "rule_ids": [
+      "purpose_undeclared"
+    ]
+  }
+}
