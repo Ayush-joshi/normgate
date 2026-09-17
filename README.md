@@ -110,6 +110,10 @@ NORMGATE_API_KEY=local-development-key ./bin/normgate config validate --file con
 See [development instructions](docs/development.md) for configuration, generated
 artifacts, test gates and tool overrides.
 
+## Agent skills
+
+NormGate provides platform-agnostic agent development skills under [`skills/`](skills/README.md) (also discoverable via `.agents/skills/`). These skills define step-by-step procedures, guardrails, and templates for autonomous AI agents and human developers working across verification, contracts, policy authoring, enforcement, receipts, architecture invariants, testing, and documentation. See the [skills routing matrix](skills/README.md).
+
 ## Implementation plan
 
 The complete six-phase build plan is documented in [plan/IMPLEMENTATION_ROADMAP.md](plan/IMPLEMENTATION_ROADMAP.md). Each phase also has an implementation-level agent guide:

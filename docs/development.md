@@ -48,7 +48,8 @@ Phase work follows the active guide under `plan/phases/`: record a requirement, 
 failing behavioral test, implement, run the affected tests, then the phase gate.
 See [policy development](policy.md) for Phase 2 commands, bundle format, source
 interfaces and deterministic evaluation limits. Protected-operation execution
-remains Phase 3 work.
+remains Phase 3 work. Consult [agent skills](../skills/README.md) for deterministic
+workflows covering verification, schemas, policies, enforcement, receipts, and testing.
 
 Hosting administration: assign the confirmed CODEOWNERS team, enable private
 vulnerability reporting and require the verification job in branch protection.
