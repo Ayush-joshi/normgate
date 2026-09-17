@@ -6,7 +6,7 @@ Every skill follows the open standard:
 - Self-contained directory containing a `SKILL.md` file.
 - Standard YAML frontmatter (`name`, `description`).
 - Deterministic, step-by-step procedures, runnable shell commands, and verification checklists.
-- Zero proprietary dependencies: consumable by **Antigravity**, **Claude Code**, **Cursor**, **Windsurf**, **Cline**, **GitHub Copilot**, or custom LLM harnesses (including fast models like **Gemini 3.6 Flash**, **GPT-4o-mini**, or **Claude Haiku**).
+- Zero proprietary dependencies: consumable by **Antigravity**, **Claude Code**, **Cursor**, **Windsurf**, **Cline**, **GitHub Copilot**, or any autonomous agent framework.
 
 ---
 
@@ -29,7 +29,7 @@ When an agent receives a prompt or task, it must consult this routing matrix and
 
 ## Execution Protocol for Autonomous AI Agents
 
-To ensure reliable, defect-free implementation—especially when using fast or smaller models—follow this deterministic 6-step protocol:
+To ensure reliable, defect-free implementation, all working agents follow this deterministic 6-step protocol:
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐

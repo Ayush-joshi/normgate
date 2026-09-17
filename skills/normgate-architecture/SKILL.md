@@ -25,9 +25,9 @@ Violations of these boundaries are not merely code review comments—they are en
 
 ---
 
-## DO THIS / NEVER DO THIS (Guardrails for AI Models)
+## DO THIS / NEVER DO THIS (Engineering Guardrails)
 
-| Never Do This (Common Model Mistakes) | Do This Instead (NormGate Standard) |
+| Never Do This (Anti-Patterns) | Do This Instead (NormGate Standard) |
 | :--- | :--- |
 | ❌ Never import `cmd/`, `sdk/`, or `web/` inside `internal/`. | ✅ `internal/` packages may only import standard library, contracts, or peer internal packages. |
 | ❌ Never import OPA SDK (`open-policy-agent/opa`) outside `internal/policy/opa/`. | ✅ Use the `policy.Engine` interface in `internal/policy/engine.go`. |

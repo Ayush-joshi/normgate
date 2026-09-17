@@ -117,9 +117,9 @@ Whenever schemas in `schemas/v1/*.schema.json` are modified:
 
 ---
 
-## DO THIS / NEVER DO THIS (Guardrails for AI Models)
+## DO THIS / NEVER DO THIS (Engineering Guardrails)
 
-| Never Do This (Common Model Mistakes) | Do This Instead (NormGate Standard) |
+| Never Do This (Anti-Patterns) | Do This Instead (NormGate Standard) |
 | :--- | :--- |
 | ❌ Never make unsubstantiated compliance claims (e.g. "Complies with HIPAA / SOC2 / GDPR"). | ✅ State: *"Core is domain-neutral. No production or compliance assurance is available."* |
 | ❌ Never claim an SDK is a client when it is only a transport type. | ✅ State: *"Generated SDK types are transport models, not HTTP clients or runtime validators."* |

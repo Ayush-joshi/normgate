@@ -24,9 +24,9 @@ NormGate enforces an unusually strict, sequential 12-step verification gate (`ma
 
 ---
 
-## DO THIS / NEVER DO THIS (Guardrails for AI Models)
+## DO THIS / NEVER DO THIS (Engineering Guardrails)
 
-| Never Do This (Common Model Mistakes) | Do This Instead (NormGate Standard) |
+| Never Do This (Anti-Patterns) | Do This Instead (NormGate Standard) |
 | :--- | :--- |
 | ❌ Never skip `make verify` and claim a task is complete. | ✅ Always run the full `make verify` gate before declaring completion. |
 | ❌ Never edit `*.gen.go` or generated types to fix `check-generated`. | ✅ Always edit the source schema in `schemas/v1/` and run `make generate`. |

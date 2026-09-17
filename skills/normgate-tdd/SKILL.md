@@ -27,9 +27,9 @@ In NormGate, **TDD is mandatory**:
 
 ---
 
-## DO THIS / NEVER DO THIS (Guardrails for AI Models)
+## DO THIS / NEVER DO THIS (Engineering Guardrails)
 
-| Never Do This (Common Model Mistakes) | Do This Instead (NormGate Standard) |
+| Never Do This (Anti-Patterns) | Do This Instead (NormGate Standard) |
 | :--- | :--- |
 | ❌ Never write implementation code before writing a failing test. | ✅ Write the test first, run it, assert it fails, then implement. |
 | ❌ Never test only the "happy path" on security-critical logic. | ✅ Test negative mutations: expired permits, altered nonces, bad signatures. |

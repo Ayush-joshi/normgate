@@ -26,9 +26,9 @@ Evidence is governed by strict privacy and minimization standards: **receipts re
 
 ---
 
-## DO THIS / NEVER DO THIS (Guardrails for AI Models)
+## DO THIS / NEVER DO THIS (Engineering Guardrails)
 
-| Never Do This (Common Model Mistakes) | Do This Instead (NormGate Standard) |
+| Never Do This (Anti-Patterns) | Do This Instead (NormGate Standard) |
 | :--- | :--- |
 | ❌ Never store raw user prompts or tool arguments in receipts. | ✅ Store the canonical `sha256:` digest of the arguments. |
 | ❌ Never store raw model output or tool response bodies in receipts. | ✅ Store the response digest and execution outcome status. |

@@ -26,9 +26,9 @@ This skill outlines the standard architecture and implementation patterns for al
 
 ---
 
-## DO THIS / NEVER DO THIS (Guardrails for AI Models)
+## DO THIS / NEVER DO THIS (Engineering Guardrails)
 
-| Never Do This (Common Model Mistakes) | Do This Instead (NormGate Standard) |
+| Never Do This (Anti-Patterns) | Do This Instead (NormGate Standard) |
 | :--- | :--- |
 | ❌ Never invoke downstream services without final-point permit verification. | ✅ Verify Ed25519 signature and payload digest immediately before the network call. |
 | ❌ Never trust caller-supplied `X-User-Id` or `X-Tenant-Id` headers. | ✅ Authenticate credentials and derive principal/tenant from trusted token claims. |

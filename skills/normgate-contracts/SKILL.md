@@ -25,9 +25,9 @@ Furthermore, NormGate enforces strict cross-language canonical serialization (Ca
 
 ---
 
-## DO THIS / NEVER DO THIS (Guardrails for AI Models)
+## DO THIS / NEVER DO THIS (Engineering Guardrails)
 
-| Never Do This (Common Model Mistakes) | Do This Instead (NormGate Standard) |
+| Never Do This (Anti-Patterns) | Do This Instead (NormGate Standard) |
 | :--- | :--- |
 | ❌ Never edit `internal/contracts/v1/types.gen.go` directly. | ✅ Edit `schemas/v1/*.schema.json` and run `make generate`. |
 | ❌ Never edit `sdk/python/.../types/__init__.py` or TS types directly. | ✅ Edit `schemas/v1/*.schema.json` and run `make generate`. |

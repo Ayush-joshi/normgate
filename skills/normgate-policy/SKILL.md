@@ -30,9 +30,9 @@ The policy runtime never relies on language models to grant authority. It maps c
 
 ---
 
-## DO THIS / NEVER DO THIS (Guardrails for AI Models)
+## DO THIS / NEVER DO THIS (Engineering Guardrails)
 
-| Never Do This (Common Model Mistakes) | Do This Instead (NormGate Standard) |
+| Never Do This (Anti-Patterns) | Do This Instead (NormGate Standard) |
 | :--- | :--- |
 | ❌ Never use `time.now_ns()` or `time.Now()` in Rego. | ✅ Use the event's canonical timestamp: `input.occurred_at`. |
 | ❌ Never call external APIs or use `http.send` in policies. | ✅ Pass pre-resolved, verified data via `input.external_facts`. |
