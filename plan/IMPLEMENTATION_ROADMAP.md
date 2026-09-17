@@ -41,6 +41,16 @@ tooling, atomic lifecycle management, distribution sources and the generic basel
 See the [Phase 2 validation record](../docs/validation/phase-2.md). Phase 3 is next;
 Phases 3–6 have not started. Protected downstream operations are not executed yet.
 
+The first Phase 3 milestone is one complete protected tool-call workflow: a sample
+application, authenticated context, policy evaluation, field removal, final-point
+permit verification, response checking, and inspectable SQLite receipts. Prove
+allow, deny, mutation/replay rejection, blocked approval, direct-access prevention,
+and accurate failure outcomes before broadening gateway coverage. See the
+[milestone acceptance scenarios](phases/PHASE_3_ENFORCEMENT_RUNTIME.md#first-milestone-one-protected-tool-call).
+This changes implementation order within Phase 3, not the six-phase scope.
+Approval-required calls remain blocked until trusted approval verification exists;
+the approval workflow and resumption experience remain Phase 4.
+
 ### Execution order
 
 Execute phases in order. A phase begins only after the previous phase's required validation and completion checklist pass. Each detailed plan defines its own test-first sequence, file-level workstreams, coverage gates, validation commands, and suggested pull-request boundaries.

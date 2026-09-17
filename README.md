@@ -85,6 +85,16 @@ operations. See [policy development and lifecycle](docs/policy.md) and the
 [Phase 2 validation record](docs/validation/phase-2.md). Generated SDK types are
 transport models, not HTTP clients or runtime validators. No production or compliance assurance is available.
 
+### Next milestone
+
+Phase 3 starts with one runnable protected tool-call demo: a sample application
+calls a tool through NormGate, policy allows, blocks, or removes fields, and a
+receipt records the actual execution outcome. The demo must also prove that
+changed or reused permits and direct downstream access cannot bypass enforcement.
+Approval-required calls stay blocked until trusted approval verification exists;
+the approval workflow and console arrive in Phase 4. See the
+[Phase 3 acceptance scenarios](plan/phases/PHASE_3_ENFORCEMENT_RUNTIME.md#first-milestone-one-protected-tool-call).
+
 ## Develop locally
 
 Use Go 1.26.8+, Python 3.11+ and Node.js 22.18+ (24 recommended).

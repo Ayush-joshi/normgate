@@ -16,6 +16,58 @@ Develop each vertical runtime slice through an end-to-end failing test before im
 
 For security-sensitive code, a successful-path test is insufficient. Each permit field and obligation must have a negative test showing that mutation or omission prevents execution.
 
+## First milestone: one protected tool call
+
+Deliver one runnable local workflow before expanding to inference, MCP, retrieval,
+and memory. This milestone proves the runtime path; it does not replace the full
+Phase 3 scope or completion gates.
+
+Use a small sample application that proposes a generic tool call, a synthetic
+payload, and an instrumented fake downstream service. No external model account
+is required. Route the request through authentication, canonical normalization,
+policy evaluation, required transformations, signed permit verification, execution,
+response checking, and SQLite receipts. Implement the portions of workstreams 1,
+2, 3, 5, and 7 needed for this path together rather than leaving receipts until
+after every gateway is built.
+
+The demonstration must include reproducible commands, example policy and inputs,
+expected decisions, downstream call counts and received payloads, and receipt
+inspection and verification. Keep raw synthetic payload inspection in the test
+downstream; runtime receipts and telemetry retain their minimized defaults.
+
+### Acceptance scenarios
+
+| Scenario | Required observable result |
+| --- | --- |
+| Authorized call | The downstream executes once and receives exactly the authorized payload; the receipt records the actual outcome. |
+| Policy denial or cross-tenant access | The caller receives a structured denial and the downstream receives zero calls. |
+| Required field removal | The downstream receives only the transformed payload; the permit binds that payload. A failed transformation prevents execution. |
+| Changed arguments, destination, or identity after authorization | Final-point verification rejects the operation and the downstream receives zero calls. |
+| Reused or expired permit | No additional downstream execution occurs, including under concurrent reuse. |
+| Approval required | Preserve the `require_approval` decision, return a structured blocked result, and make zero downstream calls. A caller-supplied approval flag cannot authorize execution. |
+| Direct downstream access | The sample application's identity cannot bypass the gateway using the deployment's network and credential configuration. |
+| Denied response | A downstream result that fails response policy is withheld from the caller; evidence distinguishes execution from response delivery. |
+| Missing authoritative context or unavailable required dependency | Fail closed before execution; no fabricated identity, labels, or successful outcome. |
+| Downstream failure or interrupted execution | Evidence distinguishes the policy decision from execution failure or an unknown outcome; restart preserves receipt integrity and replay prevention. |
+
+### Trust and approval boundaries
+
+- Derive principal and tenant from authenticated context. Resolve destinations and
+  policy-required classifications or external facts from configured trusted sources;
+  caller or model assertions alone do not establish authority. Synthetic fixtures
+  must make their trusted source explicit.
+- A decision endpoint alone does not protect a tool. Document which credentials
+  and network controls force execution through the enforcement point, and test a
+  direct-access attempt from the application's actual deployment identity.
+- Phase 3 enforces approval requirements. The approval queue, reviewer workflow,
+  and resumption experience remain Phase 4. Until trusted approval verification is
+  available, approval-required operations stay blocked without automatic retries
+  or a temporary bypass. Phase 4 must reevaluate approved operations immediately
+  before execution.
+- Receipts provide evidence of observed decisions and outcomes. Hash-chain
+  verification needs a trusted checkpoint; replay needs separately governed input
+  snapshots, as specified in [ADR 0004](../../docs/architecture/decisions/0004-minimized-receipts.md).
+
 ## Workstream 1: Service API and authenticated context
 
 ### Tests first
@@ -215,16 +267,23 @@ make verify
 
 ## Suggested pull-request sequence
 
-1. Service skeleton, authentication, and API contract tests
-2. Permit signing, verification, rotation, and replay prevention
-3. Obligation executor
-4. Inference gateway
-5. Tool and MCP gateways
-6. Retrieval and memory enforcement APIs
-7. Receipts, telemetry, and complete end-to-end scenario
+Keep the first three pull requests focused on the first milestone, with executable
+tests as each part lands. Complete its acceptance scenarios before expanding the
+protocol and operation coverage.
+
+1. Tool-call acceptance harness, service skeleton, authentication, and trusted context
+2. Signed permits, final-point verification, replay prevention, and SQLite evidence for allow/deny tool execution
+3. Field removal, response checking, blocked approval behavior, bypass/failure/restart tests, and reproducible demo instructions
+4. Remaining permit rotation and obligation coverage, audit tooling, and telemetry requirements
+5. Complete generic tool gateway and MCP discovery/invocation
+6. Inference gateway, including streaming and cancellation
+7. Retrieval and memory enforcement APIs, then full cross-gateway verification
 
 ## Completion checklist
 
+- [ ] The first protected tool-call demo is reproducible and every acceptance scenario passes.
+- [ ] Trusted context and deployment controls prevent caller impersonation and direct downstream bypass.
+- [ ] Approval-required operations remain blocked without trusted approval verification; no placeholder bypass exists.
 - [ ] No protected downstream path executes without final-point permit verification.
 - [ ] Every permit field is cryptographically bound and mutation-tested.
 - [ ] Required transformations are complete or the operation is denied.
@@ -232,4 +291,3 @@ make verify
 - [ ] Interrupted operations are recorded accurately.
 - [ ] Logs and telemetry exclude raw classified payloads by default.
 - [ ] Runtime coverage and full repository verification pass.
-
